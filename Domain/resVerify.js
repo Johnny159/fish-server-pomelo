@@ -8,8 +8,6 @@ var md5 = require('../util/md5');
 var ResMng = require('./resMng');
 var OBJ_TYPE = CONST.OBJ_TYPE;
 
-
-
 module.exports = {
     //json
     getMd5Json : function() {
@@ -23,8 +21,6 @@ module.exports = {
 
         return md5.md5(str);
     },
-
-
 
     getMd5Table : function() {
         //var json_md5_array = [];

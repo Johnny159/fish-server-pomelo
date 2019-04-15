@@ -21,13 +21,15 @@ ObjFriend.prototype.loadFromDb = function (cb) {
     friendDao.load(this, function(err, ret){
         cb(err, ret);
     });
-}
+};
+
 //进行数据库删档操作
 ObjFriend.prototype.delFromDb = function (selfUid, friendUid, cb) {
     friendDao.deleteByUid(selfUid, friendUid, function(err, ret){
         cb(err, ret);
     });
 }
+
 /**
  * Expose 'ObjFriend' constructor.
  */

@@ -49,7 +49,7 @@ app.get('/', function (req, res) {
 app.get('/getServerStartConfig', function (req, res) {
     var result = serverConfig.staticStart;
     res.end(JSON.stringify(result));
-})
+});
 
 app.get("/getGameServerInfo", function (req, res) {
     var name = os.platform();
@@ -94,7 +94,7 @@ app.get('/killall', function (req, res) {
     cpList = {}; //清空
     alive = false;
     res.end("success:all servers stopped")
-})
+});
 
 app.get('/startAllServer', function (req, res) {
     var ip = req.query.ip;  //远端传进来

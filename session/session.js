@@ -13,10 +13,7 @@
 
 //var ObjUser = require("../obj/objUser");
 //var bagDao = require("../dao/bagDao");
-var nop = function () {
-};//回调啥都不做
-
-//var redis; //redis集群的客户端
+var nop = function () {};
 
 var redis = require("../dao/redis/redisCmd")
 var rpcManager;

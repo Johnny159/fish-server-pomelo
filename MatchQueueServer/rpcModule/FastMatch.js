@@ -112,9 +112,7 @@ FastMatch.prototype.getAvailableMatch = function (uid, fServerId, type, cb) {
             logger.debug('getAvailableMatch  msgEnterRobot matchId = ' + match.matchId+', num = ' + num);
             self.startMatch(match.serverId, match.matchId);
         });
-    }
-
-
+    };
 
     //rpc 报名
     var match = self.matches[self.currentQueue[type]];
@@ -150,12 +148,12 @@ FastMatch.prototype.getAvailableMatch = function (uid, fServerId, type, cb) {
     self.currentQueue[type] = null;
     self.createNewMatch(type, nop);
 };
+
 /// 每秒钟更新玩家等待开始比赛的时间 *临时方案*
 FastMatch.prototype.everySecondMatchWaitTime = function (){
     if(this.waitTimeOfMatch == undefined || Object.keys(this.waitTimeOfMatch).length <= 0){
         return;
     }
-
     var self = this;
     for(var wKey in self.waitTimeOfMatch){
         var tempWaitTime = self.waitTimeOfMatch[wKey];
@@ -253,9 +251,10 @@ FastMatch.prototype.createNewMatch = function (type, cb) {
             logger.err('createNewMatch can not connect to fast match server:' +id);
         }
 };
+
 /**
  * 重新进入比赛
- * */
+ */
 FastMatch.prototype.againEnterMatch = function (uid, fServer, cb){
     var fastRpc = this.rpcManager.getRpcByRType("FastMatchServer");
     if (!fastRpc) {
@@ -280,7 +279,7 @@ FastMatch.prototype.againEnterMatch = function (uid, fServer, cb){
 
 /**
  * 退出进入比赛
- * */
+ */
 FastMatch.prototype.leaveMatch = function (matchId){
     var match = this.matches[matchId];
     match.current--
@@ -292,10 +291,11 @@ FastMatch.prototype.leaveMatch = function (matchId){
         }
     }
 };
+
 /**
  * 比赛开始
  * 比赛开始后不再接受报名
- * */
+ */
 FastMatch.prototype.startMatch = function (serverId, matchId) {
     var match = this.matches[matchId];
     var info = parseMatchType(match.type);
@@ -310,7 +310,7 @@ FastMatch.prototype.startMatch = function (serverId, matchId) {
 
 /**
  * 比赛结束
- * */
+ */
 FastMatch.prototype.closeMatch = function (matchId) {
     var match = this.matches[matchId];
     if(match === undefined){
@@ -358,7 +358,7 @@ FastMatch.prototype.removeServer = function (serverId) {
 
 /**
  * 根据传入的type返回该type的人数及报名费
- * */
+ */
 function parseMatchType(matchId) {
     //return global.matchTable.fastMatch[type];
     return global.compConfig[matchId];
